@@ -1,0 +1,14 @@
+<launch>
+
+    <arg name="bag" default="path/to/bag" />
+    <arg name="bag_gt" default="path/to/bag/with/poses" />
+    <arg name="outdir" default="path/to/output/folder" />
+    <arg name="seq" default="sequence_id" />
+
+    <node pkg="rosbag" type="play" name="playback" output="screen"
+          args="$(arg bag) $(arg bag_gt) \-\-pause \-\-clock -r 0.2" />
+
+    <node pkg="yaprofi_hack" type="listen_and_save.py" name="extractor" output="screen"
+          args="--outdir $(arg outdir) --seq $(arg seq)" />
+
+</launch>
