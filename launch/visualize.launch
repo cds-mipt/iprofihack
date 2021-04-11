@@ -1,0 +1,16 @@
+<launch>
+
+    <arg name="traj" />
+    <arg name="rate" default="10" />
+    <arg name="map_pcd" default="path/to/map" />
+
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find yaprofi_hack)/rviz/visualizer.rviz" />
+
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg map_pcd) 1 _frame_id:=map" />
+
+    <node pkg="yaprofi_hack" type="trajectory_publisher.py" name="trajectory_publisher" output="screen">
+        <param name="traj" value="$(arg traj)" />
+        <param name="rate" value="$(arg rate)" />
+    </node>
+
+</launch>
