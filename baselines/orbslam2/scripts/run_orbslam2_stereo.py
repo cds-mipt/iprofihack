@@ -35,6 +35,7 @@ def main(args):
         img_left = cv2.imread(path_left)
         img_right = cv2.imread(path_right)
         slam.process_image_stereo(img_left, img_right, ts)
+        sleep(0.1)
 
     save_trajectory(slam.get_trajectory_points(),  'trajectory.txt')
 

@@ -33,6 +33,7 @@ def main(args):
     for ts, path in sequence:
         img = cv2.imread(path)
         slam.process_image_mono(img, ts)
+        sleep(0.1)
     
     save_trajectory(slam.get_trajectory_points(),  'trajectory.txt')
 

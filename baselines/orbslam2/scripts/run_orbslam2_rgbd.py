@@ -35,6 +35,7 @@ def main(args):
         img_left = cv2.imread(path_left)
         depth = cv2.imread(path_depth, cv2.IMREAD_UNCHANGED)
         slam.process_image_rgbd(img_left, depth, ts)
+        sleep(0.1)
 
     save_trajectory(slam.get_trajectory_points(),  'trajectory.txt')
 
