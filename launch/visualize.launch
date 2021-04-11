@@ -2,7 +2,7 @@
 
     <arg name="traj" />
     <arg name="rate" default="10" />
-    <arg name="map_pcd" default="path/to/map" />
+    <arg name="map_pcd" default="/data_fast/IPROFI/map.pcd" />
 
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find yaprofi_hack)/rviz/visualizer.rviz" />
 
