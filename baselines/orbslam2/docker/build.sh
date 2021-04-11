@@ -1,7 +1,10 @@
 #!/bin/bash
 
 docker build .. \
+    --network host \
     -f Dockerfile \
     --build-arg UID=$(id -g) \
     --build-arg GID=$(id -g) \
-    -t orbslam_python:latest
+    --build-arg USER=${USER} \
+    -t orbslam_python_${USER}:latest
+
