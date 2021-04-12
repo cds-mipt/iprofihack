@@ -51,7 +51,5 @@ python3 scripts/run_orbslam2_rgbd.py --vocab ORBvoc.txt --config MIPT_Husky.yaml
 Далее необходимо преобразовать траекторию к правильной начальной точке на карте и сохранить только координаты X, Y, Z. Сделать это можно с помощью скрипта:
 
 ```bash
-python3 scripts/trajectory_to_submission.py \
-    --traj trajectory.txt \
-    --seq /data_fast/IPROFI/test/2021-03-27-03-30-47/
+python3 scripts/trajectory_to_submission.py --traj trajectory.txt --seq /data_fast/IPROFI/test/2021-03-27-03-30-47/
 ```
