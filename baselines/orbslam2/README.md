@@ -38,10 +38,7 @@ python3 scripts/run_orbslam2_rgbd.py -h
 
 # запускаем на тестовой последовательности
 # в результате будет сгенерирован файл trajectory.txt с траекторией робота
-python3 scripts/run_orbslam2_rgbd.py \
-    --vocab ORBvoc.txt \
-    --config MIPT_Husky.yaml \
-    --seq /data_fast/IPROFI/test/2021-03-27-03-30-47/
+python3 scripts/run_orbslam2_rgbd.py --vocab ORBvoc.txt --config MIPT_Husky.yaml --seq /data_fast/IPROFI/test/2021-03-27-03-30-47/
 ```
 
 В результате успешного запуска откроется визуализатор PangolinViewer. В нем будет отображаться текущий кадр с нанесенными ключевыми точками, а также трехмерная карта ключевых точек.
