@@ -53,3 +53,4 @@ python3 scripts/run_orbslam2_rgbd.py --vocab ORBvoc.txt --config MIPT_Husky.yaml
 ```bash
 python3 scripts/trajectory_to_submission.py --traj trajectory.txt --seq /data_fast/IPROFI/test/2021-03-27-03-30-47/
 ```
+В результате появится в корневой папке базового метода появится файл submission.txt
