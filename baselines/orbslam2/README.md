@@ -11,6 +11,8 @@ Python обертка над ORB_SLAM2: https://github.com/jskinn/ORB_SLAM2-Pyth
 ## Запуск
 
 ```bash
+# переходим в корень папки базового решения
+cd baselines/orbslam2
 # переходим в директорию со скриптами для работы с docker
 cd docker
 
