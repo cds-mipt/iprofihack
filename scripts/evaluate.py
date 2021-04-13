@@ -1,5 +1,5 @@
 import argparse
-import numpy as np
+from math import sqrt
 
 
 def build_parser():
@@ -10,14 +10,25 @@ def build_parser():
 
 
 def calc_metric(gt_xyz, result_xyz):
-    return np.sqrt(np.square(gt_xyz - result_xyz).sum(axis=1)).mean()
+    S = sum([sqrt((gt_x - result_x)**2 + (gt_y - result_y)**2 + (gt_z - result_z)**2)
+            for (gt_x, gt_y, gt_z), (result_x, result_y, result_z) in zip(gt_xyz, result_xyz)])
+    return S / len(gt_xyz)
+
+
+def loadtxt(path):
+    data = []
+    with open(path, 'r') as f:
+        for line in f:
+            values = list(map(float, line.strip().split(' ')))
+            data.append(values)
+    return data
 
 
 def main(args):
-    gt = np.loadtxt(args.gt)  # load from TUM
-    gt_xyz = gt[:, 1:4]
+    gt = loadtxt(args.gt)  # load from TUM
+    gt_xyz = [values[1:4] for values in gt]
 
-    result_xyz = np.loadtxt(args.result)
+    result_xyz = loadtxt(args.result)
 
     ATE = calc_metric(gt_xyz, result_xyz)
 
