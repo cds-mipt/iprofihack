@@ -24,7 +24,7 @@ import torchvision.datasets as datasets
 import torchvision.models as models
 
 import netvlad
-import Habitat_dataset as dataset
+import custom_dataset as dataset
 
 parser = argparse.ArgumentParser(description='pytorch-NetVlad')
 parser.add_argument('--mode', type=str, default='train', help='Mode', choices=['train', 'test', 'cluster'])

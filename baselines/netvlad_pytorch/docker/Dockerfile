@@ -33,7 +33,7 @@ RUN python3 -m pip install wheel
 RUN pip install torch==1.6 torchvision==0.7.0	
 
 # Installing faiss
-RUN pip install faiss-gpu
+RUN pip install faiss-gpu tqdm
 
 # Installing scipy
 RUN pip install numpy scipy matplotlib ipython jupyter pandas sympy nose

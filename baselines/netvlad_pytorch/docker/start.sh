@@ -12,12 +12,8 @@ docker run -it --rm -d\
     --name netvlad \
     --ipc=host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v `pwd`/../:/home/${USER}/netvlad_pytorch:rw \
-    -v /home/${USER}:/home/${USER}:rw \
-    -v /data/${USER}:/data/${USER}:rw \
-    -v /data_fast/${USER}:/data_fast/${USER}:rw \
+    -v `pwd`/../:/home/docker_netvlad:rw \
+    -v /data/${USER}:/data/docker_netvlad:rw \
+    -v /data_fast/${USER}:/data_fast/docker_netvlad:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
     x64/netvlad_pytorch:latest
-    
-docker exec --user "docker_netvlad" -it netvlad \
-    /bin/bash -c "cd /home/docker_netvlad; /bin/bash"

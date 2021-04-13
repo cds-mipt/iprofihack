@@ -4,7 +4,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
-import cv2
 import PIL
 from PIL import Image
 from PIL import ImageFont, ImageDraw
@@ -17,7 +16,7 @@ USER = getpass.getuser()
 parser = argparse.ArgumentParser(description='preparing metadata for NetVLAD')
 
 parser.add_argument('--images_dir', type=str, default='/data_fast/IPROFI/', help='Path to root directory, containing subfolders with images or images')
-parser.add_argument('--output_metadata', type=str, default='/home/{USER}/netvlad_pytorch/metadata.json', help='Path to root directory, containing subfolders with images or images')
+parser.add_argument('--output_metadata', type=str, default='/home/docker_netvlad/metadata.json', help='Path to root directory, containing subfolders with images or images')
 
 if __name__ == "__main__":
     args = parser.parse_args()
@@ -27,12 +26,12 @@ if __name__ == "__main__":
     data['qImage'] = []
     
     for filename in Path(args.images_dir).rglob('*.png'):
-        if filename.find('test') != -1:
-            if filename.find('rgb_left') != -1:
-                data['qImage'].append(filename.relpath(args.images_dir))
-        elif filename.find('train') != -1:
-            if filename.find('rgb_left') != -1:
-                data['dbImage'].append(filename.relpath(args.images_dir))
+        if str(filename).find('test') != -1:
+            if str(filename).find('rgb_left') != -1:
+                data['qImage'].append(os.path.relpath(str(filename), args.images_dir))
+        elif str(filename).find('train') != -1:
+            if str(filename).find('rgb_left') != -1:
+                data['dbImage'].append(os.path.relpath(str(filename), args.images_dir))
     data['numDb'] = len(data['dbImage'])
     data['numQ'] = len(data['qImage'])
     

@@ -14,7 +14,7 @@ from PIL import Image
 from sklearn.neighbors import NearestNeighbors
 import h5py
 
-root_dir = '/datasets/YaProfi/images/'
+root_dir = '/data_fast/IPROFI/'
 if not exists(root_dir):
     raise FileNotFoundError('root_dir is hardcoded, please adjust the path to the dataset')
 

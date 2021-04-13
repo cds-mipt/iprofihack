@@ -15,10 +15,11 @@ bash build.sh
 ```
 
 # Загрузка модели
-Загрузить и извлечь архив модели по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в папку
-/data/\<USER\>
-где \<USER\> -- логин пользователя для входа в сервер, предоставленный по конкурсу.
-
+Загрузить и извлечь архив модели по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в корень папки с базовым решением (папка netvlad_pytorch)
+Извлечение можно выполнить командой
+```bash
+unzip vgg16_netvlad_checkpoint.zip
+```
 
 # Запуск докер контейнера
 
@@ -30,7 +31,7 @@ export PYTHONPATH="${PYTHONPATH}:${PWD}"
 
 # Запуск скрипта подготовки метаданных для NetVLAD
 ```bash
-python prepare_metadata_for_netvlad.py
+python3 prepare_metadata_for_netvlad.py
 ```
 Данный скрипт принимает два аргумента (см через команду `python prepare_metadata_for_netvlad.py -h`), значения аргументов этого скрипта уже готовы для датасета конкурса Я-профессионал.
 В результате выполнения скрипта появится файл `metadata.json` в папке /home/\<USER\>/netvlad_pytorch (аргумент по умолчанию)
