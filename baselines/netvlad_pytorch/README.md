@@ -28,6 +28,16 @@ bash build.sh
 export PYTHONPATH="${PYTHONPATH}:${PWD}"
 ```
 
+# Запуск скрипта подготовки метаданных для NetVLAD
+```bash
+python prepare_metadata_for_netvlad.py
+```
+Данный скрипт принимает два аргумента (см через команду `python prepare_metadata_for_netvlad.py -h`), значения аргументов этого скрипта уже готовы для датасета конкурса Я-профессионал.
+
+# Запуск NetVLAD (получение векторов изображений)
+```bash
+bash 
+```
 
 # pytorch-NetVlad
 

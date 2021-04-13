@@ -66,7 +66,7 @@ parser.add_argument('--num_clusters', type=int, default=64, help='Number of NetV
 parser.add_argument('--margin', type=float, default=0.1, help='Margin for triplet loss. Default=0.1')
 parser.add_argument('--fromscratch', action='store_true', help='Train from scratch rather than using pretrained models')
 parser.add_argument('--metadata_json_file', type=str, help='path to json-file with metadata of the dataset')
-parser.add_argument('--output_json_file', type=str, help='path to json-file with results of predictions')
+parser.add_argument('--output_file', type=str, help='path to json-file with results of predictions')
 
 def train(epoch):
     epoch_loss = 0
@@ -244,7 +244,7 @@ def test(eval_set, epoch=0, write_tboard=False):
 
     distances, predictions = faiss_index.search(qFeat, max(n_values))
 
-    results_txt_file = open(opt.output_json_file[:-5]+'.txt', "w")
+    results_txt_file = open(opt.output_file, "w")
     output = {}
     if not(only_db):
         shift = eval_set.dbStruct.numDb
@@ -265,9 +265,7 @@ def test(eval_set, epoch=0, write_tboard=False):
             results_txt_file.write(eval_set.images[shift+num_q].split('/')[-1][:-4] + \
                                    ' ' + eval_set.images[num_db].split('/')[-1][:-4] + '\n')
                                 #    ' ' + str(cosine_similarity(dbfeature, qfeature)[0][0]) + '\n')
-    
-    with open(opt.output_json_file, 'w') as fp:
-        json.dump(output, fp)
+    results_txt_file.close()
 
     return #recalls
 
