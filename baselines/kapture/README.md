@@ -22,7 +22,7 @@ cd docker
 bash build.sh
 ```
 ## Скачивание модели
-Скачиваем модель сети по ссылке 
+Скачиваем веса модели нейронной сети по ссылке 
 https://drive.google.com/file/d/1r76NLHtJsH-Ybfda4aLkUIoW3EEsi25I/view 
 
 ## Запуск
