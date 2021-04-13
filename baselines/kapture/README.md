@@ -30,8 +30,8 @@ https://drive.google.com/file/d/1r76NLHtJsH-Ybfda4aLkUIoW3EEsi25I/view
 bash run.sh
 ```
 
-запустится Jupyter notebok, зажимаем Ctrl и переходим по ссылке
-Откроется тетрадка с решением 
+запустится Jupyter notebok, зажимаем Ctrl и переходим по ссылке.
+Откроется тетрадка с решением. 
 Запуская все ячейки, получаем на выходе файл submission.txt
 
 
