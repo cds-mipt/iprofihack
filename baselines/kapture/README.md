@@ -22,7 +22,7 @@ cd docker
 bash build.sh
 ```
 ## Скачивание модели
-скачиваем модель сети по ссылке ниже и помещаем ее в папку /home/<user>/
+скачиваем модель сети по ссылке ниже и помещаем ее в папку /home/\<user\>/
 где <user> - имя пользователя
 https://drive.google.com/file/d/1r76NLHtJsH-Ybfda4aLkUIoW3EEsi25I/view 
 
