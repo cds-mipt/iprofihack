@@ -56,10 +56,3 @@ ARG UID=1000
 ARG GID=1000
 # default password
 ARG PW=user 
-
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd && adduser ${USER} sudo
-
-WORKDIR /home/${USER}
-RUN cd /home/${USER} && chown -R ${UID}:${GID} ./
-
-USER ${UID}:${GID}
