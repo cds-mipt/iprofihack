@@ -22,7 +22,7 @@ cd docker
 bash build.sh
 ```
 ## Скачивание модели
-скачиваем модель сети по ссылке 
+Скачиваем модель сети по ссылке 
 https://drive.google.com/file/d/1r76NLHtJsH-Ybfda4aLkUIoW3EEsi25I/view 
 
 ## Запуск
@@ -31,7 +31,7 @@ https://drive.google.com/file/d/1r76NLHtJsH-Ybfda4aLkUIoW3EEsi25I/view
 bash run.sh
 ```
 
-запустится Jupyter notebok, зажимаем Ctrl и переходим по ссылке.
+Запустится Jupyter notebok, зажимаем Ctrl и переходим по ссылке.
 Откроется тетрадка с решением. 
 Запуская все ячейки, получаем на выходе файл submission.txt
 
