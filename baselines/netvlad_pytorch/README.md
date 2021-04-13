@@ -15,7 +15,7 @@ bash build.sh
 ```
 
 # Загрузка модели
-Загрузить модель по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в папку
+Загрузить и извлечь архив модели по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в папку
 /data/\<USER\>
 где \<USER\> -- логин пользователя для входа в сервер, предоставленный по конкурсу.
 
