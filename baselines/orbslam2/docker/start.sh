@@ -7,7 +7,7 @@ docker run -it -d --rm \
     --name orbslam_python_${USER} \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v `pwd`/../:/home/${USER}/orbslam2:rw \
-    -v /home/${USER}:/home/${USER}:rw \
+    -v /home/yaprofi2021/${USER}:/home/${USER}:rw \
     -v /data/${USER}:/data/${USER}:rw \
     -v /data_fast/${USER}:/data_fast/${USER}:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \

@@ -9,6 +9,6 @@ ARG GID=1000
 # default password
 ARG PW=user
 
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
+RUN groupadd --gid ${GID} yaprofi2021 && useradd -m ${USER} --uid=${UID} --gid=${GID} && echo "${USER}:${PW}" | chpasswd
 WORKDIR /home/${USER}
 USER ${UID}:${GID}
