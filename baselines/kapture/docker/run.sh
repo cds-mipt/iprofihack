@@ -5,10 +5,9 @@ docker run -it --rm \
     --name iprofi_${USER} \
     --privileged \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v `pwd`/../../../:/home/${USER}/YaProfi:rw \
-    -v /data/${USER}:/data/${USER}:rw \
-    -v /data_fast/${USER}:/data_fast/${USER}:rw \
-    -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
-
+    -v /home/${USER}/iprofihack/baselines/kapture/scripts:/home/${USER}:rw \
+    -v /data_fast/IPROFI/test:/home/${USER}/YaProfi/query:rw \
+    -v /data_fast/IPROFI/train:/home/${USER}/YaProfi/mapping:rw \
+    -v /home/${USER}/Downloads:/home/${USER}/model \
     iprofi_${USER}:latest
 

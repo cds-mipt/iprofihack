@@ -8,9 +8,7 @@ ENV     LC_ALL C.UTF-8
 ENV     DEBIAN_FRONTEND noninteractive
 # arguments
 ARG     MAKE_OPTIONS="-j8"
-ARG     SOURCE_PREFIX="/opt/src"
 
-RUN mkdir -p ${SOURCE_PREFIX}
 
 # Get dependencies
 RUN apt-get update \
@@ -48,61 +46,35 @@ RUN apt-get update \
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --upgrade setuptools wheel twine
 
-
-########################################################################################################################
-# COLMAP ###############################################################################################################
-# ├── eigen
-# └── ceres
-
-# Eigen 3.2.10
-WORKDIR ${SOURCE_PREFIX}
-RUN     git clone -b 3.2.10 https://gitlab.com/libeigen/eigen.git eigen
-RUN     mkdir -p eigen/build
-WORKDIR ${SOURCE_PREFIX}/eigen/build
-RUN     cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-         .. && \
-        make ${MAKE_OPTIONS} && make install && make clean
-
-# ceres 1.14.0
-WORKDIR ${SOURCE_PREFIX}
-RUN     git clone -b 1.14.0 https://github.com/ceres-solver/ceres-solver.git
-RUN     mkdir -p ceres-solver/build
-WORKDIR ${SOURCE_PREFIX}/ceres-solver/build
-RUN     cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTING=OFF \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_BENCHMARKS=OFF \
-        ../ && \
-        make ${MAKE_OPTIONS} && make install && make clean
-
-# colmap
-WORKDIR ${SOURCE_PREFIX}
-RUN     git clone -b 3.6-dev.3 https://github.com/colmap/colmap.git
-RUN     mkdir -p colmap/build
-WORKDIR colmap/build
-RUN     cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DTESTS_ENABLED=OFF \
-        .. && \
-        make ${MAKE_OPTIONS} && make install && make clean
-
-
 ########################################################################################################################
 # install kapture from pip.
 RUN      python3 -m pip install kapture
 
-# install kapture-localization
-ADD      . ${SOURCE_PREFIX}/kapture-localization
-WORKDIR  ${SOURCE_PREFIX}/kapture-localization
 RUN      python3 -m pip install "torch==1.4.0" "torchvision==0.5.0" "scikit_learn==0.20.2"
-RUN      python3 -m pip install -r requirements.txt --use-feature=2020-resolver
-RUN      python3 setup.py install
+RUN      pip install --upgrade ipykernel
+RUN      pip install jupyter notebook
+
+RUN mkdir /home/${USER}/repo
+WORKDIR /home/${USER}/repo
+
+RUN git clone https://github.com/naver/r2d2.git
+RUN git clone https://github.com/naver/deep-image-retrieval.git
+RUN git clone https://github.com/naver/kapture.git kapture
+RUN git clone https://github.com/naver/kapture-localization.git
+
+
+ARG USER=docker_kapture
+ARG UID=1000
+ARG GID=1000
+# default password
+ARG PW=user
+RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
+
 
 
 ### FINALIZE ###################################################################
 # save space: purge apt-get
 RUN     rm -rf /var/lib/apt/lists/*
-USER  root
-WORKDIR ${SOURCE_PREFIX}/
+WORKDIR /home/${USER}
+USER ${UID}:${GID}
+ENTRYPOINT jupyter notebook --ip 0.0.0.0 --port 8889 --no-browser --allow-root
