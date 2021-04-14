@@ -63,13 +63,6 @@ RUN git clone https://github.com/naver/kapture.git kapture
 RUN git clone https://github.com/naver/kapture-localization.git
 
 
-ARG USER=docker_kapture
-ARG UID=1000
-ARG GID=1000
-# default password
-ARG PW=user
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
-
 
 
 ### FINALIZE ###################################################################
