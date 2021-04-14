@@ -29,7 +29,7 @@ if __name__ == "__main__":
             query_image_predictions[query_image] = [db_image]
     for query_image in sorted(metadata['qImage']):
         # we take top 1 prediction from NetVLAD (there are 40 predictions sorted by similiarity)
-        image_db = query_image_predictions[query_image]
+        image_db = query_image_predictions[query_image.rstrip('.png')][0]
         date_db = db_image.split('/')[3] # this shuld be like 2021-03-27-09-08-15
         date_query = query_image.split('/')[3]
         
