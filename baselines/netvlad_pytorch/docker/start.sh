@@ -13,7 +13,7 @@ docker run -it --rm -d\
     --ipc=host \
     --net host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v pwd/../:/home/docker_netvlad:rw \
+    -v `pwd`/../:/home/docker_netvlad:rw \
     -v /data/${USER}:/data/docker_netvlad:rw \
     -v /data_fast/${USER}:/data_fast/docker_netvlad:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
