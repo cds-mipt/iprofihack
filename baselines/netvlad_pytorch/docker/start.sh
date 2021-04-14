@@ -16,4 +16,4 @@ docker run -it --rm -d\
     -v /data/${USER}:/data/docker_netvlad:rw \
     -v /data_fast/${USER}:/data_fast/docker_netvlad:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
-    x64/netvlad_pytorch:latest
+    x64/netvlad_pytorch_${USER}:latest
