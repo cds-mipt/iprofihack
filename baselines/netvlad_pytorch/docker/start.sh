@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$(docker ps -aq -f status=exited -f name=netvlad)" ]; then
-    docker rm netvlad;
+if [ "$(docker ps -aq -f status=exited -f name=netvlad_${USER})" ]; then
+    docker rm netvlad_${USER};
 fi
 
 docker run -it --rm -d\
