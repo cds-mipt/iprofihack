@@ -262,8 +262,8 @@ def test(eval_set, epoch=0, write_tboard=False):
             # output[eval_set.images[eval_set.dbStruct.numDb+i-1]]['cos_metric'].append(cosine_similarity(dbfeature, qfeature)[0][0])
             if (num_db == num_q) and (only_db):
                 continue
-            results_txt_file.write(eval_set.images[shift+num_q].split('/')[-1][:-4] + \
-                                   ' ' + eval_set.images[num_db].split('/')[-1][:-4] + '\n')
+            results_txt_file.write(eval_set.images[shift+num_q].split('/')[-1] + \
+                                   ' ' + eval_set.images[num_db].split('/')[-1] + '\n')
                                 #    ' ' + str(cosine_similarity(dbfeature, qfeature)[0][0]) + '\n')
     results_txt_file.close()
 
