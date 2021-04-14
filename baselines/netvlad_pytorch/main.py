@@ -215,7 +215,7 @@ def test(eval_set, epoch=0, write_tboard=False):
                     len(test_data_loader)), flush=True)
 
             del input, image_encoding, vlad_encoding
-    del test_data_loader
+    # del test_data_loader
 
     l = len(inference_times)
     mean = round(np.mean(inference_times), 5)
