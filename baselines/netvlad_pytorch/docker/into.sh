@@ -1,5 +1,5 @@
 #!/bin/bash
 
    
-docker exec -it x64/netvlad_pytorch_${USER}:latest \
+docker exec -it netvlad_${USER} \
     /bin/bash -c "cd /home/docker_netvlad; /bin/bash"
