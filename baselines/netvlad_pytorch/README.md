@@ -24,7 +24,7 @@ unzip vgg16_netvlad_checkpoint.zip
 # Запуск докер контейнера
 
 ```bash
-cd docker
+cd netvlad_pytorch/docker # если еще не в папке docker
 bash start.sh
 bash into.sh
 
