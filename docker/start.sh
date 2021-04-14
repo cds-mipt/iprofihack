@@ -8,7 +8,7 @@ docker run -it -d --rm \
     --privileged \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v `pwd`/../:/home/docker_iprofi/catkin_ws/src/yaprofi_hack:rw \
-    -v /home/${USER}:/home/${USER}:rw \
+    -v /home/yaprofi2021/${USER}:/home/${USER}:rw \
     -v /data/${USER}:/data/${USER}:rw \
     -v /data_fast/${USER}:/data_fast/${USER}:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
