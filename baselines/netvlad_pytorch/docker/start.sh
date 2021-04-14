@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$(docker ps -aq -f status=exited -f name=netvlad_${USER})" ]; then
-    docker rm netvlad_${USER};
+if [ "$(docker ps -aq -f status=exited -f name=netvlad)" ]; then
+    docker rm netvlad;
 fi
 
 docker run -it --rm -d\
@@ -11,8 +11,9 @@ docker run -it --rm -d\
     --privileged \
     --name netvlad_${USER} \
     --ipc=host \
+    --net host \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-    -v `pwd`/../:/home/docker_netvlad:rw \
+    -v pwd/../:/home/docker_netvlad:rw \
     -v /data/${USER}:/data/docker_netvlad:rw \
     -v /data_fast/${USER}:/data_fast/docker_netvlad:rw \
     -v /data_fast/IPROFI:/data_fast/IPROFI:ro \
