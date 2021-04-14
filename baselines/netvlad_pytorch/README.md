@@ -15,7 +15,7 @@ bash build.sh
 ```
 
 # Загрузка модели
-Загрузить и извлечь архив модели по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в корень папки с базовым решением (папка netvlad_pytorch)
+Загрузить и извлечь архив модели по ссылке https://drive.google.com/open?id=17luTjZFCX639guSVy00OUtzfTQo4AMF2 в корень папки с базовым решением (например, папка /home/\<USER\>/iprofihack/baselines/netvlad_pytorch/)
 Извлечение можно выполнить командой
 ```bash
 unzip vgg16_netvlad_checkpoint.zip
@@ -24,7 +24,9 @@ unzip vgg16_netvlad_checkpoint.zip
 # Запуск докер контейнера
 
 ```bash
-./docker/start_and_into.sh
+cd docker
+bash start.sh
+bash into.sh
 
 export PYTHONPATH="${PYTHONPATH}:${PWD}"
 ```
