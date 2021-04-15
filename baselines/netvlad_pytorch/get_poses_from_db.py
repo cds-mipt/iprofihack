@@ -1,6 +1,7 @@
 import argparse
 import os
 import json
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser(description='getting poses from database images')
 
@@ -20,14 +21,14 @@ if __name__ == "__main__":
     pairs_lines = pairs_file.readlines()
     pairs_lines = [pairs_lines[i].split(' ') for i in range(len(pairs_lines))]
     query_image_predictions = {}
-    for pair in sorted(pairs_lines):
+    for pair in tqdm(sorted(pairs_lines)):
         query_image = pair[0]
         db_image = pair[1]
         if query_image in query_image_predictions.keys():
             query_image_predictions[query_image.rstrip('.png')].append(db_image.rstrip('.png'))
         else:
             query_image_predictions[query_image.rstrip('.png')] = [db_image.rstrip('.png')]
-    for query_image in sorted(metadata['qImage']):
+    for query_image in tqdm(sorted(metadata['qImage'])):
         # we take top 1 prediction from NetVLAD (there are 40 predictions sorted by similiarity)
         image_db = query_image_predictions[os.path.basename(query_image).rstrip('.png')][0]
         date_db = db_image.split('_')[0] # this should be like 2021-03-27-09-08-15
@@ -40,17 +41,17 @@ if __name__ == "__main__":
         db_kitti_lines = db_kitti_file.readlines()
         db_tum_lines = db_tum_file.realines()
 
-        num_db = db_image.split('/')[-1]
-        num_db = int(num_db.rstrip('.png'))
-        num_query = query_image.split('/')[-1]
-        num_query = int(query_image.rstrip('.png'))
+        num_db = db_image.split('_')[-1]
+        num_db = int(num_db.rstrip('.png\n'))
+        num_query = os.path.basename(query_image).split('_')[-1]
+        num_query = int(num_query.rstrip('.png'))
 
         timestamp = db_tum_lines[num_db]
         timestamp = timestamp.split(' ')[0]
 
         pose = db_kitti_lines[num_db]
 
-        output_file.write("{} {}\n".format())
+        output_file.write("{} {}\n".format(timestamp, pose))
     output_file.close()
         
 
