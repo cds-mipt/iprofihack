@@ -24,9 +24,9 @@ if __name__ == "__main__":
         query_image = pair[0]
         db_image = pair[1]
         if query_image in query_image_predictions.keys():
-            query_image_predictions[query_image].append(db_image.rstrip('.png'))
+            query_image_predictions[query_image.rstrip('.png')].append(db_image.rstrip('.png'))
         else:
-            query_image_predictions[query_image] = [db_image.rstrip('.png')]
+            query_image_predictions[query_image.rstrip('.png')] = [db_image.rstrip('.png')]
     for query_image in sorted(metadata['qImage']):
         # we take top 1 prediction from NetVLAD (there are 40 predictions sorted by similiarity)
         image_db = query_image_predictions[os.path.basename(query_image).rstrip('.png')][0]
