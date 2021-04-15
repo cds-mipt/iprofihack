@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description='getting poses from database images
 parser.add_argument('--pairs_NetVLAD', type=str, default='/home/docker_netvlad/NetVLAD_query_top_40.txt', help='Path to the file that contains matched pairs of images')
 parser.add_argument('--root_image_dir', type=str, default='/data_fast/IPROFI', help='Path to root directory, containing subfolders with images or images')
 parser.add_argument('--metadata_for_NetVLAD', type=str, default='/home/docker_netvlad/metadata.json', help='Path to the file with dataset metadata, prepared for NetVLAD')
-parser.add_argument('--output_file', type=str, default='/home/docker_netvlad/NetVLAD_submission', help='Text file with timestamps and poses')
+parser.add_argument('--output_file', type=str, default='/home/docker_netvlad/NetVLAD_submission.txt', help='Text file with timestamps and poses')
 
 
 if __name__ == "__main__":
