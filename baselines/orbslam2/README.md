@@ -10,6 +10,8 @@ Python обертка над ORB_SLAM2: https://github.com/jskinn/ORB_SLAM2-Pyth
 
 ## Запуск
 
+Перед запуском необходимо скачать архив [словаря](https://github.com/raulmur/ORB_SLAM2/blob/master/Vocabulary/ORBvoc.txt.tar.gz) и распаковать его в текущую директорию.
+
 ```bash
 # переходим в корень папки базового решения
 cd baselines/orbslam2
